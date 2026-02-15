@@ -1,0 +1,681 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>Privacy Policy • AF SECURITY App</title>
+  <style>
+    :root{
+      --bg0:#070A12;
+      --bg1:#0B1020;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --muted2: rgba(255,255,255,.52);
+      --good:#35d07f;
+      --warn:#ffcc66;
+      --accent:#5aa8ff;
+      --accent2:#00e5ff;
+      --shadow: 0 18px 80px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 26px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 10% 10%, rgba(90,168,255,.18), transparent 60%),
+        radial-gradient(800px 500px at 90% 20%, rgba(0,229,255,.14), transparent 55%),
+        radial-gradient(700px 450px at 70% 90%, rgba(53,208,127,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #070A12);
+      overflow-x:hidden;
+    }
+
+    /* animated grid + glow */
+    .bg-grid{
+      position:fixed; inset:0;
+      pointer-events:none;
+      opacity:.55;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(70% 60% at 50% 35%, #000 40%, transparent 75%);
+      animation: drift 14s linear infinite;
+      transform: translate3d(0,0,0);
+    }
+    @keyframes drift{
+      0%{ background-position: 0 0, 0 0; }
+      100%{ background-position: 54px 0, 0 54px; }
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 16px 70px;
+      position:relative;
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+      justify-content:space-between;
+      margin-top: 14px;
+      margin-bottom: 18px;
+    }
+
+    .brand{
+      display:flex; gap:14px; align-items:center;
+    }
+
+    .logo{
+      width:56px; height:56px;
+      border-radius: 16px;
+      background:
+        radial-gradient(22px 22px at 30% 25%, rgba(255,255,255,.18), transparent 60%),
+        linear-gradient(135deg, rgba(90,168,255,.85), rgba(0,229,255,.55));
+      box-shadow: 0 18px 45px rgba(90,168,255,.18), 0 18px 55px rgba(0,229,255,.10);
+      position:relative;
+      border: 1px solid rgba(255,255,255,.18);
+      overflow:hidden;
+    }
+    .logo:before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: conic-gradient(from 180deg, rgba(255,255,255,.0), rgba(255,255,255,.22), rgba(255,255,255,.0));
+      animation: shine 3.6s linear infinite;
+      filter: blur(2px);
+    }
+    @keyframes shine{
+      to{ transform: rotate(360deg); }
+    }
+    .logo svg{ position:absolute; inset:0; margin:auto; width:34px; height:34px; opacity:.92; }
+
+    h1{
+      margin:0;
+      font-size: clamp(22px, 3.2vw, 34px);
+      letter-spacing: .2px;
+      line-height: 1.15;
+    }
+    .subtitle{
+      margin:6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .chip{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      font-size: 12.5px;
+      color: rgba(255,255,255,.82);
+    }
+    .chip b{ font-family: var(--mono); font-weight: 700; }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+      font-weight: 650;
+      font-size: 13.5px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      transition: transform .15s ease, background .2s ease, border-color .2s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.22);
+      text-decoration:none;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.20); }
+    .btn:active{ transform: translateY(0px) scale(.99); }
+
+    main{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 920px){
+      header{ flex-direction:column; align-items:stretch; }
+      .actions{ justify-content:flex-start; }
+      main{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .card-inner{ padding: 18px 18px 16px; }
+    .card-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.12);
+    }
+    .card-title h2{
+      margin:0;
+      font-size: 15px;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.86);
+    }
+    .badge{
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.78);
+    }
+
+    .policy p{ color: var(--muted); line-height: 1.7; margin: 10px 0; font-size: 14.5px; }
+    .policy h3{
+      margin: 16px 0 8px;
+      font-size: 15.5px;
+      color: rgba(255,255,255,.92);
+      letter-spacing: .2px;
+    }
+
+    .list{
+      margin: 10px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .li{
+      display:flex;
+      gap:12px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      background: rgba(90,168,255,.9);
+      margin-top: 4px;
+      box-shadow: 0 0 0 4px rgba(90,168,255,.15);
+      flex: 0 0 auto;
+    }
+    .li strong{ display:block; font-size: 14.5px; }
+    .li span{ display:block; color: var(--muted); font-size: 13.8px; line-height: 1.55; margin-top: 2px; }
+
+    .aside{
+      display:grid;
+      gap:14px;
+      align-content:start;
+    }
+
+    .kpi{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .mini{
+      padding: 14px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .mini .label{ color: var(--muted2); font-size: 12px; text-transform:uppercase; letter-spacing:.35px; }
+    .mini .value{ margin-top: 6px; font-size: 15px; font-weight: 750; color: rgba(255,255,255,.92); }
+    .mini .hint{ margin-top: 6px; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+
+    .contact-box{
+      display:grid;
+      gap:10px;
+    }
+    .contact-row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .icon{
+      width:38px; height:38px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      background: rgba(90,168,255,.14);
+      border: 1px solid rgba(90,168,255,.24);
+      flex:0 0 auto;
+    }
+    .contact-row .txt{ display:flex; flex-direction:column; gap:2px; }
+    .contact-row .txt small{ color: var(--muted2); font-size: 12px; }
+    .contact-row .txt a{
+      color: rgba(255,255,255,.92);
+      text-decoration:none;
+      font-weight: 700;
+      font-family: var(--mono);
+      font-size: 13px;
+      word-break: break-word;
+    }
+    .contact-row .txt a:hover{ text-decoration:underline; }
+
+    .toc{
+      display:grid;
+      gap:8px;
+      padding: 14px;
+    }
+    .toc a{
+      text-decoration:none;
+      color: rgba(255,255,255,.82);
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      transition: transform .15s ease, background .2s ease, border-color .2s ease;
+      font-size: 13.5px;
+    }
+    .toc a:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16); }
+    .toc a .arrow{ opacity:.6; }
+
+    footer{
+      margin-top: 14px;
+      color: var(--muted2);
+      font-size: 12.5px;
+      line-height: 1.5;
+      text-align:center;
+    }
+
+    /* light mode */
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg0:#f6f9ff;
+        --bg1:#eef4ff;
+        --card: rgba(0,0,0,.04);
+        --card2: rgba(0,0,0,.05);
+        --stroke: rgba(0,0,0,.10);
+        --text: rgba(12,16,28,.92);
+        --muted: rgba(12,16,28,.66);
+        --muted2: rgba(12,16,28,.52);
+        --shadow: 0 18px 80px rgba(0,0,0,.10);
+      }
+      body{
+        background:
+          radial-gradient(900px 600px at 10% 10%, rgba(90,168,255,.18), transparent 60%),
+          radial-gradient(800px 500px at 90% 20%, rgba(0,229,255,.14), transparent 55%),
+          radial-gradient(700px 450px at 70% 90%, rgba(53,208,127,.10), transparent 60%),
+          linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #f6f9ff);
+      }
+      .bg-grid{
+        opacity:.35;
+        background-image:
+          linear-gradient(to right, rgba(0,0,0,.08) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0,0,0,.08) 1px, transparent 1px);
+      }
+      .card-title{ background: rgba(255,255,255,.55); }
+    }
+
+    /* print */
+    @media print{
+      .bg-grid, .actions{ display:none !important; }
+      body{ background:#fff !important; color:#000 !important; }
+      .card{ box-shadow:none !important; }
+      a{ color:#000 !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-grid"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z" stroke="white" stroke-width="1.7" opacity=".95"/>
+            <path d="M9 11V9.7a3 3 0 0 1 6 0V11" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+            <rect x="8.2" y="11" width="7.6" height="6.6" rx="1.8" stroke="white" stroke-width="1.7"/>
+            <path d="M12 13.4v1.9" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Privacy Policy <span style="opacity:.75;">(AF SECURITY App)</span></h1>
+          <div class="subtitle">
+            <span class="chip">Last updated: <b>February 15, 2026</b></span>
+            <span class="chip">Offline-first • No ads • No analytics</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="btn" href="#contact" title="Jump to Contact">
+          <span>Contact</span>
+          <span style="opacity:.7;">↗</span>
+        </a>
+        <button class="btn" id="copyBtn" type="button" title="Copy the policy text">
+          <span>Copy</span>
+          <span style="opacity:.7;">⎘</span>
+        </button>
+        <button class="btn" id="printBtn" type="button" title="Print / Save as PDF">
+          <span>Print</span>
+          <span style="opacity:.7;">🖨</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Main policy -->
+      <section class="card policy" id="top">
+        <div class="card-title">
+          <h2>Policy</h2>
+          <span class="badge" id="statusBadge">Readable</span>
+        </div>
+
+        <div class="card-inner" id="policyText">
+          <p>
+            AF SECURITY ("we", "our", "us") provides this Android app to present company information and utility tools.
+          </p>
+
+          <h3 id="who">Who we are</h3>
+          <ul class="list">
+            <li class="li">
+              <span class="dot"></span>
+              <div>
+                <strong>AF SECURITY</strong>
+                <span>Email: <a href="mailto:support@afsecurity.org">support@afsecurity.org</a> • Phone: <a href="tel:+212780363315">+212780363315</a></span>
+              </div>
+            </li>
+          </ul>
+
+          <h3 id="data">Data we collect in the app</h3>
+          <ul class="list">
+            <li class="li">
+              <span class="dot"></span>
+              <div>
+                <strong>No account required</strong>
+                <span>This app does not require account creation and does not collect personal profile data inside the app.</span>
+              </div>
+            </li>
+            <li class="li">
+              <span class="dot"></span>
+              <div>
+                <strong>Tool inputs stay on-device</strong>
+                <span>Tool inputs (estimators/converters) are processed locally on the device.</span>
+              </div>
+            </li>
+          </ul>
+
+          <h3 id="permissions">Permissions and device access</h3>
+          <ul class="list">
+            <li class="li">
+              <span class="dot"></span>
+              <div>
+                <strong>No sensitive runtime permissions</strong>
+                <span>The app does not request sensitive runtime permissions (such as camera, microphone, contacts, or location).</span>
+              </div>
+            </li>
+            <li class="li">
+              <span class="dot"></span>
+              <div>
+                <strong>System actions only</strong>
+                <span>The app uses system actions to open your phone dialer and email app when you press Call or Email.</span>
+              </div>
+            </li>
+          </ul>
+
+          <h3 id="contacting">When you contact us</h3>
+          <p>
+            If you call or email us, we receive the information you choose to provide (for example: phone number, email address,
+            and message content) so we can respond to your request.
+          </p>
+
+          <h3 id="thirdparties">Third parties</h3>
+          <ul class="list">
+            <li class="li">
+              <span class="dot"></span>
+              <div>
+                <strong>No ads / no tracking SDKs</strong>
+                <span>This app version does not include in-app advertising SDKs or in-app analytics/tracking SDKs.</span>
+              </div>
+            </li>
+            <li class="li">
+              <span class="dot"></span>
+              <div>
+                <strong>External apps have their own policies</strong>
+                <span>If you use external apps (phone, email, app store), those services process data under their own privacy policies.</span>
+              </div>
+            </li>
+          </ul>
+
+          <h3 id="sharing">Data sharing</h3>
+          <ul class="list">
+            <li class="li">
+              <span class="dot"></span>
+              <div>
+                <strong>No selling of data</strong>
+                <span>We do not sell your personal data.</span>
+              </div>
+            </li>
+            <li class="li">
+              <span class="dot"></span>
+              <div>
+                <strong>Support-only use</strong>
+                <span>We only use contact information you provide to communicate with you and handle your request.</span>
+              </div>
+            </li>
+          </ul>
+
+          <h3 id="retention">Data retention</h3>
+          <p>
+            The app itself does not store user tool inputs on our servers.
+            If you contact us, we may keep correspondence records as needed for support, legal, or business record purposes.
+          </p>
+
+          <h3 id="children">Children's privacy</h3>
+          <p>
+            This app is not directed to children under 13, and we do not knowingly collect personal data from children through the app.
+          </p>
+
+          <h3 id="changes">Changes to this policy</h3>
+          <p>
+            We may update this Privacy Policy if app features or legal requirements change.
+            Any update will be posted with a new "Last updated" date.
+          </p>
+
+          <h3 id="contact">Contact</h3>
+          <p>
+            For privacy questions, contact:
+            <a href="mailto:support@afsecurity.org">support@afsecurity.org</a>
+            or
+            <a href="tel:+212780363315">+212780363315</a>.
+          </p>
+        </div>
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="aside">
+        <section class="card">
+          <div class="card-title">
+            <h2>Quick facts</h2>
+            <span class="badge">AF SECURITY</span>
+          </div>
+          <div class="card-inner">
+            <div class="kpi">
+              <div class="mini">
+                <div class="label">Accounts</div>
+                <div class="value">None</div>
+                <div class="hint">No sign-in required.</div>
+              </div>
+              <div class="mini">
+                <div class="label">Tracking</div>
+                <div class="value">None</div>
+                <div class="hint">No analytics / ads SDKs.</div>
+              </div>
+              <div class="mini">
+                <div class="label">Processing</div>
+                <div class="value">On-device</div>
+                <div class="hint">Tool inputs stay local.</div>
+              </div>
+              <div class="mini">
+                <div class="label">Permissions</div>
+                <div class="value">Minimal</div>
+                <div class="hint">No camera/mic/location/contacts.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-title">
+            <h2>Sections</h2>
+            <span class="badge">TOC</span>
+          </div>
+          <nav class="toc">
+            <a href="#who">Who we are <span class="arrow">→</span></a>
+            <a href="#data">Data we collect <span class="arrow">→</span></a>
+            <a href="#permissions">Permissions <span class="arrow">→</span></a>
+            <a href="#contacting">When you contact us <span class="arrow">→</span></a>
+            <a href="#thirdparties">Third parties <span class="arrow">→</span></a>
+            <a href="#sharing">Data sharing <span class="arrow">→</span></a>
+            <a href="#retention">Data retention <span class="arrow">→</span></a>
+            <a href="#children">Children <span class="arrow">→</span></a>
+            <a href="#changes">Changes <span class="arrow">→</span></a>
+            <a href="#contact">Contact <span class="arrow">→</span></a>
+          </nav>
+        </section>
+
+        <section class="card">
+          <div class="card-title">
+            <h2>Contact</h2>
+            <span class="badge">Support</span>
+          </div>
+          <div class="card-inner contact-box">
+            <div class="contact-row">
+              <div class="icon" aria-hidden="true">✉️</div>
+              <div class="txt">
+                <small>Email</small>
+                <a href="mailto:support@afsecurity.org">support@afsecurity.org</a>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="icon" aria-hidden="true">📞</div>
+              <div class="txt">
+                <small>Phone</small>
+                <a href="tel:+212780363315">+212780363315</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-title">
+            <h2>Tip</h2>
+            <span class="badge">Store-ready</span>
+          </div>
+          <div class="card-inner">
+            <p style="margin:0;color:var(--muted);line-height:1.65;font-size:14px;">
+              Keep this page accessible from your app settings and the Play Store listing. If you later add analytics, ads,
+              login, or cloud sync, update this policy and your Data Safety form.
+            </p>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      © <span id="year"></span> AF SECURITY • Privacy Policy page • Print-friendly • Single file
+    </footer>
+  </div>
+
+  <script>
+    // Small, safe JS (no external libs)
+    const yearEl = document.getElementById("year");
+    yearEl.textContent = new Date().getFullYear();
+
+    const copyBtn = document.getElementById("copyBtn");
+    const printBtn = document.getElementById("printBtn");
+    const badge = document.getElementById("statusBadge");
+
+    function toast(text){
+      badge.textContent = text;
+      badge.style.borderColor = "rgba(53,208,127,.35)";
+      badge.style.background = "rgba(53,208,127,.12)";
+      badge.style.color = "rgba(255,255,255,.90)";
+      clearTimeout(window.__t);
+      window.__t = setTimeout(() => {
+        badge.textContent = "Readable";
+        badge.style.borderColor = "";
+        badge.style.background = "";
+        badge.style.color = "";
+      }, 1400);
+    }
+
+    copyBtn.addEventListener("click", async () => {
+      const txt = document.getElementById("policyText").innerText.trim();
+      try{
+        await navigator.clipboard.writeText(txt);
+        toast("Copied ✓");
+      }catch(e){
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = txt;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+        toast("Copied ✓");
+      }
+    });
+
+    printBtn.addEventListener("click", () => window.print());
+
+    // smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener("click", (e)=>{
+        const id = a.getAttribute("href");
+        const target = document.querySelector(id);
+        if(!target) return;
+        e.preventDefault();
+        target.scrollIntoView({behavior:"smooth", block:"start"});
+        history.pushState(null, "", id);
+      });
+    });
+  </script>
+</body>
+</html>
